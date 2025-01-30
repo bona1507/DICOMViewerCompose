@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DICOM Viewer</string>
+    <string name="image_description">DICOM image</string>
+    <string name="text_description">Person name</string>
+    <string name="button_description">Click to load a DICOM file</string>
+    <string name="button_text">Load a DICOM file</string>
+    <string name="title_activity_compose">COMPOSE</string>
+</resources>
