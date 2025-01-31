@@ -50,7 +50,8 @@ fun DicomViewerMainScreen(
     isAutoRotateEnabled: Boolean,
     onToggleAutoRotate: () -> Unit,
     autoRotateSpeed: Int,
-    onSpeedChange: (Int) -> Unit
+    onSpeedChange: (Int) -> Unit,
+    patientName: String
 ) {
     Scaffold(
         topBar = {
@@ -82,6 +83,12 @@ fun DicomViewerMainScreen(
                     .padding(16.dp)
                     .verticalScroll(rememberScrollState())
             ) {
+                Text(
+                    text = "Nama/ID Pasien: $patientName",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = Color.Black,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
                 // DICOM Image Section (with pinch-to-zoom functionality)
                 Box(
                     modifier = Modifier
@@ -208,7 +215,7 @@ fun DicomViewerMainScreen(
                     if (!isAutoRotateEnabled && totalFrames > 1) {
                         var frameValue by remember { mutableFloatStateOf(frameIndex.toFloat()) }
 
-                        Text("Frame Position", style = MaterialTheme.typography.bodyLarge)
+                        Text("Posisi Klip", style = MaterialTheme.typography.bodyLarge)
                         DicomSlider(
                             value = frameValue,
                             onValueChange = { value ->
@@ -219,7 +226,7 @@ fun DicomViewerMainScreen(
                             sliderColor = Color(0xFF10CC7B)
                         )
 
-                        Text("Contrast", style = MaterialTheme.typography.bodyLarge)
+                        Text("Kontras", style = MaterialTheme.typography.bodyLarge)
                         DicomSlider(
                             value = contrast,
                             onValueChange = { contrast = it },
@@ -227,7 +234,7 @@ fun DicomViewerMainScreen(
                             sliderColor = Color(0xFF0C965A)
                         )
 
-                        Text("Brightness", style = MaterialTheme.typography.bodyLarge)
+                        Text("Kecerahan", style = MaterialTheme.typography.bodyLarge)
                         DicomSlider(
                             value = brightness,
                             onValueChange = { brightness = it },
